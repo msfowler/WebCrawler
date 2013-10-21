@@ -1,0 +1,43 @@
+Melyssa Fowler
+CS 240
+Web Crawler Design
+July 12, 2011
+
+Description of Data Structures
+^^^^^^^^^^^ ^^ ^^^^ ^^^^^^^^^^
+
+STOP WORDS: To store the stop words I plan on using a sorted array. This is a good choice because I
+			can run very quick binary searches on the array to find if a certain word is a stop
+			word. The array contains c++ string objects.
+
+PAGE QUEUE: The page queue will store all the pages that need to be processed. I plan on using a 
+			linked list (with pointers to the first and last in the list) for the pages needing 
+			processing. This is a good choice because it is easy to get the first item on the list 
+			(next page to be processed) and to add things to the end of the list (new page needing 
+			processing). The page queue contains Page objects.
+			
+HISTORY: 	For the history of pages already crawled, I will use a BST, so that I can find quickly 
+			if a page has been crawled already. The history contains Page objects
+			
+KEYWORD INDEX: They keyword index will be a map with the key being the word and the value being 
+			a set of occurances. This will be stored in a hash map, so that words can be found 
+			quickly, even if the index is very large. The keyword is a string object and the value 
+			is an occurence set object. 
+			
+OCCURANCE SET: I will implement the occurence sets using a BST as well. Every word found on a 
+			page will have its own occurence set and be stored in the keyword index. The occurence 
+			set contains occurence objects. 
+		
+
+Important Objects Contained in the Data Structures
+^^^^^^^^^ ^^^^^^^ ^^^^^^^^^ ^^ ^^^ ^^^^ ^^^^^^^^^^
+			
+PAGE:		Pages will be objects as well containing a URL and description. This is the object 
+			used the inte page queue and history. 
+
+URL:		URLs will be stored simply as objects that contain a string to hold the URL and methods
+			to manipulate and get information on the URL.
+			
+OCCURENCE: 	Occurences will contain a page object for the page that the words appear on, a string
+			holding the word the occurence represents, and a count of the number of times it 
+			appears on that page. 
